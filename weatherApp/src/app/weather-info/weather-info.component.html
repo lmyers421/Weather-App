@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container" *ngIf="weatherData">
     <div class="upper-data">
-        <img src="/hot.jpg" *ngIf="14 > 15">
-        <img src="/cold.jpg" *ngIf="14 <= 15">
+        <img src="/hot.jpg" *ngIf="weatherData.current.temp_f > 40">
+        <img src="/cold.jpg" *ngIf="weatherData.current.temp_f <= 40">
         <div class="weather-data">
-            <div class="location">Cincinnati</div>
-            <div class="temperature">{{ 14.40 | number: '1.0-0'}}°F</div>
+            <div class="location">{{weatherData.location.name}}</div>
+            <div class="temperature">{{ currentTemp| number: '1.0-0'}}°F</div>
         </div>
     </div>
     
@@ -19,7 +19,7 @@
                     <span>min</span>
                 </div>
                 <div class="info-block-val">
-                    10°F
+                    {{minTemp}}°F
                 </div>
             </div>
             <div class="info-block">
@@ -28,7 +28,7 @@
                     <span>high</span>
                 </div>
                 <div class="info-block-val">
-                    20°F
+                    {{maxTemp}}°F
                 </div>
             </div>
             <div class="info-block">
@@ -37,7 +37,7 @@
                     <span>humidity</span>
                 </div>
                 <div class="info-block-val">
-                    77%
+                    {{humidity}}%
                 </div>
             </div>
             <div class="info-block">
@@ -46,7 +46,7 @@
                     <span>wind</span>
                 </div>
                 <div class="info-block-val">
-                    11 mph
+                    {{windSpeed}} mph
                 </div>
             </div>
         </div>
